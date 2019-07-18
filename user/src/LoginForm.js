@@ -29,9 +29,10 @@ function LoginForm({ values, errors, touched, isSubmitting }) {
       <div>
         <label>
           <Field type="checkbox" name="tos" checked={values.tos} />
+          {/* <p className="error-text">{touched.tos && errors.tos}</p> */}
         </label>
       </div>
-      <button>Submit</button>
+      <button disabled={isSubmitting}>Submit</button>
     </Form>
   );
 }
@@ -70,8 +71,10 @@ export default withFormik({
     password: Yup.string()
       .min(6)
       .max(16)
-      .required("you need a password"),
-    tos: Yup.bool().required("check this box")
+      .required("you need a password")
+    // tos: Yup.boolean()
+    //   .label()
+    //   .test("check it")
   })
 })(LoginForm);
 // export default LoginForm;
